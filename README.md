@@ -1,10 +1,10 @@
 <a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
+  <img alt="Subscription Tracker - Track and manage your subscriptions with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
+  <h1 align="center">Subscription Tracker</h1>
 </a>
 
 <p align="center">
- The fastest way to build apps with Next.js and Supabase
+ Track and manage your subscriptions with Next.js and Supabase
 </p>
 
 <p align="center">
@@ -56,21 +56,21 @@ If you wish to just develop locally and not deploy to Vercel, [follow the steps 
 2. Create a Next.js app using the Supabase Starter template npx command
 
    ```bash
-   npx create-next-app --example with-supabase with-supabase-app
+   npx create-next-app --example with-supabase subscription_tracker
    ```
 
    ```bash
-   yarn create next-app --example with-supabase with-supabase-app
+   yarn create next-app --example with-supabase subscription_tracker
    ```
 
    ```bash
-   pnpm create next-app --example with-supabase with-supabase-app
+   pnpm create next-app --example with-supabase subscription_tracker
    ```
 
 3. Use `cd` to change into the app's directory
 
    ```bash
-   cd with-supabase-app
+   cd subscription_tracker
    ```
 
 4. Rename `.env.example` to `.env.local` and update the following:
