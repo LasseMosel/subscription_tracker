@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/server";
 import { InfoIcon } from "lucide-react";
-import { FetchDataSteps } from "@/components/tutorial/fetch-data-steps";
+// import { FetchDataSteps } from "@/components/tutorial/fetch-data-steps";
 import { GmailConnection } from "@/components/gmail-connection";
 import { SubscriptionScanner } from "@/components/subscription-scanner";
 
@@ -53,10 +53,10 @@ export default async function ProtectedPage() {
           {JSON.stringify(data.claims, null, 2)}
         </pre>
       </div>
-      <div>
+      {/* <div>
         <h2 className="font-bold text-2xl mb-4">Next steps</h2>
         <FetchDataSteps />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { GmailService } from '@/lib/gmail-service';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
     try {
         const gmailService = new GmailService();
         const authUrl = gmailService.getAuthUrl();

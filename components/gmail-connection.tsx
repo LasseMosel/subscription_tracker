@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
+import { CheckCircle, Mail, RefreshCw } from 'lucide-react';
+import { useState } from 'react';
 
 interface GmailConnectionProps {
     isConnected: boolean;
@@ -12,6 +12,7 @@ interface GmailConnectionProps {
 
 export function GmailConnection({ isConnected, gmailEmail }: GmailConnectionProps) {
     const [isConnecting, setIsConnecting] = useState(false);
+    const [isDisconnecting, setIsDisconnecting] = useState(false);
 
     const handleConnect = async () => {
         setIsConnecting(true);
@@ -29,6 +30,24 @@ export function GmailConnection({ isConnected, gmailEmail }: GmailConnectionProp
         }
     };
 
+    const handleDisconnect = async () => {
+        setIsDisconnecting(true);
+        try {
+            const response = await fetch('/api/gmail/disconnect', {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                // Refresh the page to update the connection status
+                window.location.reload();
+            }
+        } catch (error) {
+            console.error('Error disconnecting Gmail:', error);
+        } finally {
+            setIsDisconnecting(false);
+        }
+    };
+
     return (
         <Card className="w-full max-w-md">
             <CardHeader>
@@ -42,9 +61,44 @@ export function GmailConnection({ isConnected, gmailEmail }: GmailConnectionProp
             </CardHeader>
             <CardContent>
                 {isConnected ? (
-                    <div className="flex items-center gap-2 text-green-600">
-                        <CheckCircle className="h-4 w-4" />
-                        <span>Connected to {gmailEmail}</span>
+                    <div className="space-y-3">
+                        <div className="flex items-center gap-2 text-green-600">
+                            <CheckCircle className="h-4 w-4" />
+                            <span>Connected to {gmailEmail}</span>
+                        </div>
+                        <div className="flex gap-2">
+                            <Button
+                                onClick={handleDisconnect}
+                                disabled={isDisconnecting}
+                                variant="outline"
+                                size="sm"
+                                className="flex-1"
+                            >
+                                {isDisconnecting ? (
+                                    <>
+                                        <RefreshCw className="h-3 w-3 mr-1 animate-spin" />
+                                        Disconnecting...
+                                    </>
+                                ) : (
+                                    'Disconnect'
+                                )}
+                            </Button>
+                            <Button
+                                onClick={handleConnect}
+                                disabled={isConnecting}
+                                size="sm"
+                                className="flex-1"
+                            >
+                                {isConnecting ? (
+                                    <>
+                                        <RefreshCw className="h-3 w-3 mr-1 animate-spin" />
+                                        Reconnecting...
+                                    </>
+                                ) : (
+                                    'Reconnect'
+                                )}
+                            </Button>
+                        </div>
                     </div>
                 ) : (
                     <Button
@@ -52,7 +106,14 @@ export function GmailConnection({ isConnected, gmailEmail }: GmailConnectionProp
                         disabled={isConnecting}
                         className="w-full"
                     >
-                        {isConnecting ? 'Connecting...' : 'Connect Gmail'}
+                        {isConnecting ? (
+                            <>
+                                <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+                                Connecting...
+                            </>
+                        ) : (
+                            'Connect Gmail'
+                        )}
                     </Button>
                 )}
             </CardContent>

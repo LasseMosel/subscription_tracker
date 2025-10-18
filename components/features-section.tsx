@@ -62,7 +62,7 @@ export function FeaturesSection() {
                         Everything you need to manage subscriptions
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                        From basic tracking to advanced analytics, we've got all the tools you need to take control of your subscription spending.
+                        From basic tracking to advanced analytics, we got all the tools you need to take control of your subscription spending.
                     </p>
                 </div>
 

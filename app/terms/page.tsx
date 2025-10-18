@@ -23,7 +23,7 @@ export default function TermsPage() {
 
                 <h2>Limitation of Liability</h2>
                 <p>
-                    This service is provided "as is" without warranties. We are not responsible for
+                    This service is provided as is without warranties. We are not responsible for
                     any issues arising from the use of this application.
                 </p>
 
