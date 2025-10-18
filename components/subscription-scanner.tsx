@@ -69,17 +69,18 @@ export function SubscriptionScanner({ isGmailConnected }: SubscriptionScannerPro
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    <div className="flex gap-2">
+                    <div className="flex flex-col sm:flex-row gap-2">
                         <input
                             type="text"
                             placeholder="Search query (optional)"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="flex-1 min-w-0 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         <Button
                             onClick={handleScan}
                             disabled={!isGmailConnected || isScanning}
+                            className="sm:flex-shrink-0"
                         >
                             {isScanning ? 'Scanning...' : 'Scan Emails'}
                         </Button>
